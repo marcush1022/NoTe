@@ -3,7 +3,7 @@
   reflect.ValueOf, reflect.TypeOf, 类型和值
 
 #fmt格式化输出
-`用"%v"标志，它可以以适当的格式输出任意的类型（包括数组和结构）`
+`用"%v"标志, 它可以以适当的格式输出任意的类型( 包括数组和结构) `
 `使用Print和Println不需要格式化输出, 会根据参数类型自动转换. Print默认将参数以%v输出, Println在Print的基础上增加换行.`
 `Println还会在参数之间加入空格`
 

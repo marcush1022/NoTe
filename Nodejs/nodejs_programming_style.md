@@ -52,4 +52,20 @@ for(i ...) {
 
 #不使用++或--, 使用+=, -=
 
+#[FORCE]<变量> 使用Camel命名法; var loadingModels = {}
+#[FORCE]<常量> 全部字母大写; var STATIC_ENITY = {}
+#[FORCE]<函数> 使用Camel命名法; function stringFormat () {}
+#[FORCE]<类> 使用Pascal命名法; function TextNode (val) {} //构造函数
+#[FORCE]<类的方法和属性> 使用Camel命名法; function TextNode (v, e) { this.value = v; this.engine = e; }
+#[FORCE]<枚举变量> 使用Pascal命名法; 枚举属性全部大写, 单词间下划线分割; 
+#                 var TargetState = {
+#                     READING: 1,
+#                     APPLIED: 2,
+#                     READY: 3
+#                 };
+#[FORCE]<命名空间> 使用Camel命名法; nameSpace.heavryWeapon = {}
+#[ADVICED]<函数名> 使用动词宾语; function getStyle(v) {}
+#[ADVICED]<Boolean> 使用is或has; var isReady = true;
+
+
 

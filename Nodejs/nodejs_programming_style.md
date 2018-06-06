@@ -52,6 +52,7 @@ for(i ...) {
 
 #不使用++或--, 使用+=, -=
 
+###命名:
 #[FORCE]<变量> 使用Camel命名法; var loadingModels = {}
 #[FORCE]<常量> 全部字母大写; var STATIC_ENITY = {}
 #[FORCE]<函数> 使用Camel命名法; function stringFormat () {}

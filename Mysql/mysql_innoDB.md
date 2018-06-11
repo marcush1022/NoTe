@@ -52,7 +52,7 @@ ________________________________________________________________________________
 `MySql的InnoDB默认是RR级别`, 需要将session开启为RC级别, 并设置binlog的模式;
 SET session transcation isolation level read committed;
 SET SESSIOIN binlog_format = 'ROW'; (或是MIXED)
-`Repeatable Read`: InnoDB默认的隔离级别, ‘读’是指可重读, 即一个事务的多个实例在并发的读取记录时, 会看到同样的结果;
+`Repeatable Read`: InnoDB默认的隔离级别, '读'是指可重读, 即一个事务的多个实例在并发的读取记录时, 会看到同样的结果;
 `Serializable`: 读加共享锁, select都会加锁,  写加排他锁, 读写互斥, 使用了悲观锁的理论, 实现简单, 数据更加安全, 但是`并发能力非常差`, 当业务的并发非常少或没有并发时才使用此模式;
 
 #悲观锁

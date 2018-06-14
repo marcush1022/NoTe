@@ -7,9 +7,8 @@ select_type:
 table: 显示数据是关于哪个表
 
 type: 显示的是访问的类型, 从好到差依次是: 
-system > const > eq_req > ref > fulltext > ref_or_null > index_merge > unique_subquery >index_subquery > 
-range > index > ALL
-一般查询至少需要达到range, 最好达到ref;
+`system > const > eq_req > ref > fulltext > ref_or_null > index_merge > unique_subquery >index_subquery > range > index > ALL`
+`一般查询至少需要达到range, 最好达到ref`;
 
 possible_keys: 可能应用于这张表中的索引, 为空表示无可能的索引;
 
@@ -42,13 +41,13 @@ SUBQUERY: 子查询的第一个SELECT;
 DEPENDENT SUBQUERY: 子查询的第一个SELECT, 取决于外面的查询;
 
 `type返回值的含义`
-const: `表最多一个匹配行, 在查询开始时读取，因此是常数，查询速度较快, 因为只读取一次`;
+const: `表最多一个匹配行(最大值/最小值可以匹配这个查询), 在查询开始时读取，因此是常数，查询速度较快, 因为只读取一次`;
 #eq_ref???: 对于每个来自前一个表的行组合，从该表中读取一行, 仅次于const;
-#ref???: 对于每个来自前一个表的行的组合，所有匹配索引值的行冲该表中读取;
+#ref???: 这个链接类型只有在查询使用了不是主键或唯一值或这些类型的部分时出现;
 index_merge: 表示使用了索引合并优化方法;
 unique_subquery: 该类型替换了IN中的子查询, 是一个索引查找函数，比子查询更快;
 index_subquery: 类似unique_subquery, 可替换IN子查询, 但只使用与以下形式: value IN (SELECT key_column FROM single_table WHERE some_expr);
-range: 只查询指定范围的行，使用索引来选择行;
+range: 这个链接类型使用索引返回一个范围内的行，如>和<;
 index: 该链接类型与ALL相同，不同的是是在索引树中查询，通常比ALL快;
 ALL: 全表扫描, 最慢的连接类型;
 

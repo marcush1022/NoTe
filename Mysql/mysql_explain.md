@@ -6,7 +6,7 @@ select_type:
 
 table: 显示数据是关于哪个表
 
-type: 显示的是访问的类型, 从好到差依次是: 
+type: 显示的是数据的访问的类型, 从好到差依次是: 
 `system > const > eq_req > ref > fulltext > ref_or_null > index_merge > unique_subquery >index_subquery > range > index > ALL`
 `一般查询至少需要达到range, 最好达到ref`;
 

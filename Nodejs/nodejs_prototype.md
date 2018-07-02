@@ -57,6 +57,7 @@ var arr = new myArray();
 arr.push(1, 2, 3);
 arr.lenght //3
 arr instanceof Array //true;
+// instance返回一个布尔值，某个对象是否是某个类型的实例;
 
 #CONSTRUCTOR
 prototype对象有个constructor属性：默认指向对象的prototype的构造函数;

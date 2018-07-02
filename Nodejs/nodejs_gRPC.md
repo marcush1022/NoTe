@@ -16,6 +16,8 @@ A client side rpc, client send `a streaming of request` to server, and server re
 4. `BIDIRECTIOINAl RPC`:
 A `both side` rpc, server and client can `read and write in any time`(send request or return response in any order), dont need to wait for another side to finish;
 
+#PROTOCOL BUFFERS(.proto)
+gRPC uses the protocal buffers(a way of serializing structed data for use in communication protocols or data storage), gRPC recommend to use proto3;
 
 
 

@@ -44,7 +44,8 @@ mspan: `span在tcmalloc中是内存管理的基本单位`, 一般以链表的形
 `new只用于分配内存; make用于slice, map, channel的初始化, 不返回指针;`
 
 1. new并不初始化内存, `只是将其置零, new(T)会为T类型的新项目分配置零的内存, 并返回其地址`, 一个*T类型的值;
-  (GO术语: 其返回一个`指向新分配的类型为T的指针`, 这个指针指向的空间置为零值(zero value);)
+  (GO术语: 其返回一个`指向新分配的类型为T的指针`, 这个指针指向的空间置为零值(zero value));
+  (`返回一个新分配的零值的指针`);
 
 2. make(T, args)与new(T)不同, 只用来创建`map, slice, channel`, 并返回一个初始化的(不是置零), 类型为T的`值`(不是*T);
   之所以不同是因为这`3个类型是引用数据类型, 使用前必须初始化`;
@@ -52,3 +53,20 @@ mspan: `span在tcmalloc中是内存管理的基本单位`, 一般以链表的形
   例: `make([]int, 10, 100)`分配一个长度为100的`数组`, 初始长度为10, 容量为100, `改slice引用含有前10个元素的数组`; `new([]int)`返回一个指向新分配的
   被置零的slice结构体的`指针`, 即`指向值为nil的slice指针`;
   `make不返回指针, 要使用指针, 则使用new`;
+
+#make slice时：(长度和容量)
+1. 容量表示底层数组的大小，长度是可以使用的大小；
+2. 容量：append扩展长度时，若新的长度不大于底层数组的大小，不会更换底层数组，否则会申请一个新的底层数组, 将已有的数据拷贝过去并将原来的数组丢掉, 容量的用途：`在数据拷贝和内存申请的消耗与内存占用之间提供一个权衡`;
+3. 长度：限制切片可使用的成员的数量，提供边界查询；
+
+#len和cap 
+#func len(v type) int
+1. 若v是数组，返回数组的元素个数；
+2. 若v是指向数组的指针，返回*v的元素个数;
+3. 若v是slice和map返回v的元素个数;
+4. 若v是channel, the number of elements queued(unread) in the channel buffer;
+#func cap(v type) int
+1. 数组v: 元素个数, 同len(v);
+2. 数组指针v: *v的元素个数, 同len(v);
+3. slice v: slice的最大容量, >=len(v);
+4. channel v: the channel buffer capacity, in unit of element;

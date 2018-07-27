@@ -45,4 +45,3 @@ request.setEncoding(): 设置请求的编码；
 request.addListener(): 为request添加事件的回调函数;
 
 
-
